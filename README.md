@@ -41,12 +41,14 @@ A modern e-commerce application built with [Next.js 16](https://nextjs.org) and 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18+ or higher
 - pnpm (recommended) or npm/yarn
 
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 pnpm install
 # or
@@ -54,6 +56,7 @@ npm install
 ```
 
 2. Start the development server:
+
 ```bash
 pnpm dev
 # or

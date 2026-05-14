@@ -1,0 +1,35 @@
+"use client";
+
+import * as React from "react";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useRouter } from "next/dist/client/components/navigation";
+
+export function SearchBar() {
+  const [query, setQuery] = React.useState("");
+
+  const router = useRouter();
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const name = formData.get("name") as string;
+    console.log("Searching for:", name);
+
+    if (name) {
+      router.push(`/list?name=${encodeURIComponent(name)}`);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSearch} className="relative w-full max-w-sm">
+      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+      <Input
+        type="search"
+        placeholder="Search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="pl-9 pr-4 w-full"
+      />
+    </form>
+  );
+}

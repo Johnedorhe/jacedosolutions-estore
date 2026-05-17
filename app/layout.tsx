@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { ClerkProvider } from '@clerk/nextjs'
+import './globals.css'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.className} ${geistMono.className} h-full antialiased`}
+    lang="en"
+    className={`${geistSans.className} ${geistMono.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col max-w-[90vw] mx-auto">
+        <body className="min-h-full flex flex-col max-w-[90vw] mx-auto">
+        <ClerkProvider>
         <nav>
         <Navbar />
         </nav>
@@ -41,6 +44,7 @@ export default function RootLayout({
         <footer>
         <Footer />
         </footer>
+        </ClerkProvider>
         </body>
     </html>
   );

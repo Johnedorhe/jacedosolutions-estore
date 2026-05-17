@@ -1,10 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Bell, ShoppingCart, User} from "lucide-react";
+import { Bell, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { UserButton } from '@clerk/nextjs'
 
 export function NavIcons() {
   const [cartCount] = useState(3);
@@ -72,7 +73,7 @@ export function NavIcons() {
         aria-label="View profile"
         onClick={toggleProfileMenu}
       >
-        <User className="h-5 w-5" />
+        <UserButton />
       </Button>
     </div>
   );

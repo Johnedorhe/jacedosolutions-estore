@@ -7,29 +7,37 @@ import MobileLinks from './mobile-links'
 import { SearchBar } from './search-bar'
 import { NavIcons } from './navicons'
 import { Show, SignInButton, SignUpButton} from '@clerk/nextjs'
+import Container from './container'
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center h-20">
-    <p className='text-red-700 font-semibold'><Link href="/">JAC<span className="text-blue-700">EDO</span></Link></p>
-      <Links />
-      <SearchBar />
+    <div className='bg-white py-4 border-b border-gray-100 shadow-sm sticky top-0 z-50'>
+      <Container classname='flex justify-between items-center'>
+        <p className='text-red-600 font-semibold hover:opacity-85'>
+          <Link href="/">JACED<span className="text-blue-900">O</span></Link>
+        </p>
+        <div>
+          <Links />
+        </div>
+        <div>
+          <SearchBar />
+        </div>
       
-      <Show when="signed-in">
-      <NavIcons />
-      </Show>
-
-         <Show when="signed-out"> 
-          <div className='text-xs font-medium'>
-            <SignInButton />
+        <Show when="signed-in">
+          <div>
+            <NavIcons />
           </div>
-            <div className='text-xs font-medium'>
+        </Show>
+
+        <Show when="signed-out"> 
+          <div className='flex items-center gap-4 text-xs font-medium'>
+            <SignInButton />
             <SignUpButton />
-            </div>
-         </Show> 
-      <MobileLinks />
+          </div>
+        </Show> 
+        <MobileLinks />
+      </Container>
     </div>
-      
   )
 }
 

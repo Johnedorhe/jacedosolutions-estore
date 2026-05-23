@@ -18,7 +18,7 @@ const Links = () => {
     <div>
     <div className='md:flex gap-4 hidden'>
         {NavLinks.map((link) => (
-            <Link  className={pathname === link.href ? "text-amber-200" : "text-lime-500"} key={link.href} href={link.href}>{link.name}</Link>
+            <Link  className={pathname === link.href ? "text-amber-200" : "text-lime-500"} key={link.name} href={link.href}>{link.name}</Link>
         ) )}
     </div>
     </div>

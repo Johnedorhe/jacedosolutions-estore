@@ -4,17 +4,21 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from '@/com
 import { Button } from '@/components/ui/button';
 import { Trash2 } from 'lucide-react';
 
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 interface CartModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  cartItems: CartItem[];
+  onRemoveItem: (id: number) => void;
 }
 
-const CartModal = ({ open, onOpenChange }: CartModalProps) => {
-  const cartItems = [
-    { id: 1, name: 'Product 1', price: 29.99, quantity: 2 },
-    { id: 2, name: 'Product 2', price: 49.99, quantity: 1 },
-  ];
-
+const CartModal = ({ open, onOpenChange, cartItems, onRemoveItem }: CartModalProps) => {
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -24,7 +28,6 @@ const CartModal = ({ open, onOpenChange }: CartModalProps) => {
           <SheetTitle>Shopping Cart</SheetTitle>
         </SheetHeader>
 
-        {/* Cart Items */}
         <div className="mt-8 flex-1 overflow-y-auto">
           {cartItems.length === 0 ? (
             <p className="text-center text-muted-foreground py-8">Your cart is empty</p>
@@ -40,7 +43,12 @@ const CartModal = ({ open, onOpenChange }: CartModalProps) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
-                    <Button variant="ghost" size="sm" className="text-destructive">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-destructive"
+                      onClick={() => onRemoveItem(item.id)}
+                    >
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -50,7 +58,6 @@ const CartModal = ({ open, onOpenChange }: CartModalProps) => {
           )}
         </div>
 
-        {/* Cart Footer */}
         {cartItems.length > 0 && (
           <SheetFooter className="mt-8 flex-col gap-4">
             <div className="flex justify-between border-t pt-4">

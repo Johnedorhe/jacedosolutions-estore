@@ -6,11 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { UserButton } from '@clerk/nextjs'
-import CartModal from "@/components/cartModal";
 
 export function NavIcons() {
   const [cartCount] = useState(3);
-  const [iscartOpen, setIsCartOpen] = useState(false);
   const [notificationCount] = useState(5);
 
   return (
@@ -35,7 +33,6 @@ export function NavIcons() {
 
       {/* Cart Dropdown Menu */}
           <Button 
-            onClick={() => setIsCartOpen(true)}
             variant="ghost" 
             size="icon" 
             className="relative text-muted-foreground hover:text-foreground"
@@ -55,9 +52,6 @@ export function NavIcons() {
       <div className="flex h-10 w-10 items-center justify-center">
         <UserButton />
       </div>
-
-      {/* Cart Modal */}
-      <CartModal open={iscartOpen} onOpenChange={setIsCartOpen} />
     </div>
   );
 }

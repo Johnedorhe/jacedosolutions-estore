@@ -1,11 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
+import { Input } from './ui/input'
+import { Button } from './ui/button'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div className='mt-8'>
-      <div>
-        <div>
+    <div className='mt-20 md:px-8 px-4 py-16 lg:px-16 xl:px-32 bg-gray-100 2xl:px-36'>
+      {/* TOP */}
+      <div className='flex justify-between gap-20'>
+        {/* LEFT */}
+        <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4 text-sm text-gray-600'>
           <Link href="/">
             <div>
               <p className='text-red-600 font-semibold hover:opacity-85'>
@@ -55,6 +60,26 @@ const Footer = () => {
               </svg>
             </Link>
 
+          </div>
+        </div>
+      </div>
+      {/* CENTER */}
+      <div className='hidden lg:flex justify-between w-1/2'>
+
+      </div>
+      {/* RIGHT */}
+      <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8'>
+        <h1 className='font-medium text-lg'>SUBSCRIBE</h1>
+        <p>Be the first to know about our latest products and exclusive offers!</p>
+        <div>
+          <Input placeholder="Your email address"  />
+          <Button className='bg-red-600 text-white mt-4 hover:opacity-85 transition-opacity'>Subscribe</Button>   
+          <span className='font-semibold'>Secure Payments</span>      
+          <div>
+            <Image src="/discover.png" alt="Discover" width={40} height={20} />
+            <Image src="/skrill.png" alt="Skrill" width={40} height={20} />
+            <Image src="/paypal.png" alt="PayPal" width={40} height={20} />
+            <Image src="/mastercard.png" alt="MasterCard" width={40} height={20} />
           </div>
         </div>
       </div>

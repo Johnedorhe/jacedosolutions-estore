@@ -6,24 +6,22 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div className='mt-20 md:px-8 px-4 py-16 lg:px-16 xl:px-32 bg-gray-100 2xl:px-36'>
-      {/* TOP */}
-      <div className='flex justify-between gap-20'>
-        {/* LEFT */}
-        <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4 text-sm text-gray-600'>
+    <footer className='bg-gray-100 mt-20 px-4 py-16 md:px-8 lg:px-16 xl:px-32 2xl:px-36'>
+      {/* MAIN CONTAINER */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12'>
+        
+        {/* COLUMN 1: COMPANY INFO */}
+        <div className='flex flex-col gap-4 text-sm text-gray-600'>
           <Link href="/">
-            <div>
-              <p className='text-red-600 font-semibold hover:opacity-85'>
-                JACED<span className="text-blue-900">O</span>
-              </p>
-            </div>
+            <p className='text-red-600 font-semibold text-lg hover:opacity-85 transition-opacity'>
+              JACED<span className="text-blue-900">O</span>
+            </p>
           </Link> 
           <p>Address of Jacedo Solutions LTD</p>
           <p>+234848160794</p>
           
-          {/* Social Icons Container */}
-          <div className='flex gap-4 items-center mt-4 text-gray-700'>
-            
+          {/* Social Icons */}
+          <div className='flex gap-4 items-center mt-2 text-gray-700'>
             {/* Facebook */}
             <Link 
               href="https://facebook.com" 
@@ -59,31 +57,51 @@ const Footer = () => {
                 <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
               </svg>
             </Link>
-
           </div>
         </div>
-      </div>
-      {/* CENTER */}
-      <div className='hidden lg:flex justify-between w-1/2'>
 
-      </div>
-      {/* RIGHT */}
-      <div className='w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8'>
-        <h1 className='font-medium text-lg'>SUBSCRIBE</h1>
-        <p>Be the first to know about our latest products and exclusive offers!</p>
-        <div>
-          <Input placeholder="Your email address"  />
-          <Button className='bg-red-600 text-white mt-4 hover:opacity-85 transition-opacity'>Subscribe</Button>   
-          <span className='font-semibold'>Secure Payments</span>      
-          <div>
-            <Image src="/discover.png" alt="Discover" width={40} height={20} />
-            <Image src="/skrill.png" alt="Skrill" width={40} height={20} />
-            <Image src="/paypal.png" alt="PayPal" width={40} height={20} />
-            <Image src="/mastercard.png" alt="MasterCard" width={40} height={20} />
+        {/* COLUMN 2: QUICK LINKS */}
+        <div className='flex flex-col gap-4 text-sm text-gray-600'>
+          <h2 className='font-semibold text-gray-900 text-base tracking-wider uppercase'>Company</h2>
+          <Link href="/about" className='hover:text-red-600 transition-colors'>About Us</Link>
+          <Link href="/careers" className='hover:text-red-600 transition-colors'>Careers</Link>
+          <Link href="/blog" className='hover:text-red-600 transition-colors'>Blog</Link>
+          <Link href="/contact" className='hover:text-red-600 transition-colors'>Contact</Link>
+        </div>
+
+        {/* COLUMN 3: SHOP LINKS */}
+        <div className='flex flex-col gap-4 text-sm text-gray-600'>
+          <h2 className='font-semibold text-gray-900 text-base tracking-wider uppercase'>Shop</h2>
+          <Link href="/new" className='hover:text-red-600 transition-colors'>New Arrivals</Link>
+          <Link href="/deals" className='hover:text-red-600 transition-colors'>Deals & Sales</Link>
+          <Link href="/popular" className='hover:text-red-600 transition-colors'>Popular Products</Link>
+          <Link href="/faq" className='hover:text-red-600 transition-colors'>Help & FAQ</Link>
+        </div>
+
+        {/* COLUMN 4: NEWSLETTER & PAYMENTS */}
+        <div className='flex flex-col gap-4 text-sm text-gray-600'>
+          <h2 className='font-semibold text-gray-900 text-base tracking-wider uppercase'>Subscribe</h2>
+          <p>Be the first to know about our latest products and exclusive offers!</p>
+          <div className='flex flex-col sm:flex-row gap-2 w-full'>
+            <Input placeholder="Your email address" className='bg-white' />
+            <Button className='bg-red-600 text-white hover:opacity-85 transition-opacity px-6 shrink-0'>
+              Subscribe
+            </Button>
+          </div>
+          
+          <div className='flex flex-col gap-2 mt-4'>
+            <span className='font-semibold text-gray-900'>Secure Payments</span>      
+            <div className='flex gap-2 items-center flex-wrap'>
+              <Image src="/discover.png" alt="Discover" width={40} height={20} className='object-contain h-5' />
+              <Image src="/skrill.png" alt="Skrill" width={40} height={20} className='object-contain h-5' />
+              <Image src="/paypal.png" alt="PayPal" width={40} height={20} className='object-contain h-5' />
+              <Image src="/mastercard.png" alt="MasterCard" width={40} height={20} className='object-contain h-5' />
+            </div>
           </div>
         </div>
+
       </div>
-    </div>
+    </footer>
   )
 }
 
